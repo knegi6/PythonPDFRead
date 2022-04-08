@@ -6,7 +6,7 @@ import pandas as pd
 # os.chdir(r"\\Bpspfilnor401\BluePrism\GAFG\GAFG_AgentB_Indexing\4_7_2022\SPLIT\April 2022 AML 30-day Notice.pdf_SPLIT_FOLDER")
 print(os.getcwd())
 
-pdf_document = (r"\\Bpspfilnor401\BluePrism\GAFG\GAFG_AgentB_Indexing\4_7_2022\SPLIT\April 2022 AML 30-day Notice.pdf_SPLIT_FOLDER\April 2022 AML 30-day Notice-1.pdf")
+#pdf_document = (r"\\Bpspfilnor401\BluePrism\GAFG\GAFG_AgentB_Indexing\4_7_2022\SPLIT\April 2022 AML 30-day Notice.pdf_SPLIT_FOLDER\April 2022 AML 30-day Notice-1.pdf")
 
 def get_text_from_pdf_into_list(pdf_path):
     doc = fitz.open(pdf_path)
@@ -43,9 +43,9 @@ def extract_agent_code(page_text_list):
     agentCode = agentCode.strip()
     return agentCode
 
-agent_code = extract_agent_code(get_text_from_pdf_into_list(pdf_document))
+# agent_code = extract_agent_code(get_text_from_pdf_into_list(pdf_document))
 
-print(agent_code)
+# print(agent_code)
 # print(agentCode.length())
 
 from os import chdir, listdir
@@ -90,7 +90,7 @@ def get_files_recursively(directory):
         yield from get_files_recursively(subdirectory)
 
 
-files = get_files_recursively(r"\\Bpspfilnor401\BluePrism\GAFG\Correspb\4_7_2022\SPLIT\Athene Letters for Mailing 35305.pdf_SPLIT_FOLDER")
+files = get_files_recursively(r"\\Bpspfilnor401\BluePrism\GAFG\Correspb\4_7_2022\SPLIT\GAFG Letters for Mailing 35305.pdf_SPLIT_FOLDER")
 agent_code_dictionary={"Path":"Policy Number"}
 
 
@@ -109,6 +109,6 @@ df = pd.DataFrame(data=agent_code_dictionary, index=[0])
 df = (df.T)
 print(df)
 
-df.to_excel(r"\\Bpspfilnor401\BluePrism\GAFG\Correspb\4_7_2022\Input\Athene Letters for Mailing 35305.xlsx")
+df.to_excel(r"\\Bpspfilnor401\BluePrism\GAFG\Correspb\4_7_2022\Input\GAFG Letters for Mailing 35305.xlsx")
 
 
