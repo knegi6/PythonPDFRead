@@ -2,6 +2,8 @@ import fitz
 import os
 import pandas as pd
 
+# def get_policy_number_drom_table(pdf_path)
+
 
 # os.chdir(r"\\Bpspfilnor401\BluePrism\GAFG\GAFG_AgentB_Indexing\4_7_2022\SPLIT\April 2022 AML 30-day Notice.pdf_SPLIT_FOLDER")
 print(os.getcwd())
