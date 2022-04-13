@@ -51,8 +51,11 @@ def get_files_recursively(directory):
     for subdirectory in get_directories(directory):
         yield from get_files_recursively(subdirectory)
 
+# master_excel= (r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_11_2022\Master_Excel_WCT_4_11_2022.xlsx")
+# pd.read_excel(master_excel)
 
-files = get_files_recursively(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\SPLIT\ck.pdf_SPLIT_FOLDER")
+
+files = get_files_recursively(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_11_2022\SPLIT\ck.pdf_SPLIT_FOLDER")
 agent_code_dictionary={"Path":"Policy Number"}
 
 
@@ -60,6 +63,7 @@ for file_path in files:
     #agent_code = extract_agent_code(get_text_from_pdf_into_list(file_path))
 
     agent_code_dictionary[file_path]= get_policy_no_from_table(file_path)
+
 
 #print(agent_code_dictionary)
 
@@ -71,5 +75,15 @@ df = pd.DataFrame(data=agent_code_dictionary, index=[0])
 df = (df.T)
 print(df)
 
-df.to_excel(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\Input\ck.pdf_WCT_Indexing_Input_File.xlsx")
+excel_file_path= (r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_11_2022\Input\ck.pdf_WCT_Indexing_Input_File.xlsx")
 
+df.to_excel(excel_file_path)
+
+import openpyxl as opxl
+
+excel_file = opxl.load_workbook(excel_file_path)
+excel_sheet = excel_file['Sheet1']
+
+# delete column
+excel_sheet.delete_rows(idx=1) # row 1 is deleted]
+excel_file.save(excel_file_path)

@@ -29,7 +29,7 @@ def get_text_from_pdf_into_list(pdf_path):
 #agentCode = ""
 
 
-def extract_agent_code(page_text_list):
+def extract_agent_code_which_is_the_first_line_of_pdf(page_text_list):
     agentCode = page_text_list[0]
     agentCode = agentCode.strip()
     print(agentCode)

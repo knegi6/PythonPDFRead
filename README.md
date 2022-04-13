@@ -8,3 +8,4 @@
  pip install jupyter
  pip install PyMuPDF
  pip install pandas
+pip install 
