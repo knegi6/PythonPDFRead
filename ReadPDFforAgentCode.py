@@ -76,6 +76,7 @@ for file_path in files:
     #agent_code = extract_agent_code(get_text_from_pdf_into_list(file_path))
     agent_code_dictionary[file_path]= pfr.extract_agent_code(pfr.get_text_from_pdf_into_list(file_path))
 
+
 #print(agent_code_dictionary)
 
 

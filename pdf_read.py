@@ -1,12 +1,13 @@
 # from typing_extensions import Self
 import fitz
 import camelot as cam
+import re
 
 class PdfRead:
 
     def get_text_from_pdf_into_list(self,pdf_path):
         doc = fitz.open(pdf_path)
-        print ("number of pages: %i" % doc.pageCount)
+        # print ("number of pages: %i" % doc.pageCount)
         #print(doc.metadata)
 
         page = doc.load_page(0)
@@ -25,7 +26,7 @@ class PdfRead:
             
     def find_agent_code_line(self, page_text_list):
         for item in page_text_list:
-            if item.startswith("Agent Code:"):
+            if item.startswith("Agent Code"):
                 agent_code_line = item
                 return agent_code_line
                 break
@@ -33,7 +34,11 @@ class PdfRead:
 
     def extract_agent_code(self, page_text_list):
         agent_code = self.find_agent_code_line(page_text_list)
-        print(agent_code)
+        # print(agent_code)
+        # if re.search("Agent Code: ", agent_code):
+        #     agent_code = agent_code.replace("Agent Codes: ","")        
+        # elif re.search("Agent Codes: ", agent_code):
+        #     agent_code = agent_code.replace("Agent Code: ","")
         agent_code = agent_code.replace("Agent Code: ","")
         agent_code = agent_code.strip()
         return agent_code
@@ -46,6 +51,29 @@ class PdfRead:
                 break
         #return agentCode
 
+    def find_contract_number_line(self, page_text_list):
+        for item in page_text_list:
+            if item.startswith("Contract"):
+                contract_number_line = item
+                print(contract_number_line)
+                return contract_number_line
+                break
+
+    def get_data_after_colon_agent_code(self, text_list):
+        agent_code = self.find_agent_code_line(text_list)
+        print(agent_code)
+        agent_code = agent_code.partition(":")[2]
+        # agent_code = agent_code.split(":")[1]
+        agent_code = agent_code.strip()
+        return agent_code 
+
+    def get_data_after_colon_contract_number(self, text_list):
+        contract_code = self.find_contract_number_line(text_list)
+        print(contract_code)
+        # contract_code = contract_code.partition(":")[2]
+        contract_code = contract_code.split(":")[1]
+        contract_code = contract_code.strip()
+        return contract_code 
 
         
     def extract_policy_number(self, page_text_list):

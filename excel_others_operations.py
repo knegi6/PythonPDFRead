@@ -18,25 +18,25 @@ class ExcelAndPandasOperation:
 
     
     
-    files = ffo.get_files_recursively(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\SPLIT\ck.pdf_SPLIT_FOLDER")
-    agent_code_dictionary={"Path":"Agent Code"}
-    policy_number_dictionary={"Path":"Policy Number"}
+    # files = ffo.get_files_recursively(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\SPLIT\ck.pdf_SPLIT_FOLDER")
+    # agent_code_dictionary={"Path":"Agent Code"}
+    # policy_number_dictionary={"Path":"Policy Number"}
 
 
-    for file_path in files:
-        #agent_code = extract_agent_code(get_text_from_pdf_into_list(file_path))
+    # for file_path in files:
+    #     #agent_code = extract_agent_code(get_text_from_pdf_into_list(file_path))
 
-        agent_code_dictionary[file_path]= pr.get_policy_no_from_table(file_path)
+    #     agent_code_dictionary[file_path]= pr.get_policy_no_from_table(file_path)
 
-    #print(agent_code_dictionary)
+    # #print(agent_code_dictionary)
 
 
 
-    df = pd.DataFrame(data=agent_code_dictionary, index=[0])
-    #df = pd.DataFrame(data=agent_code_dictionary)
+    # df = pd.DataFrame(data=agent_code_dictionary, index=[0])
+    # #df = pd.DataFrame(data=agent_code_dictionary)
 
-    df = (df.T)
-    print(df)
+    # df = (df.T)
+    # print(df)
 
-    df.to_excel(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\Input\ck.pdf_WCT_Indexing_Input_File.xlsx")
+    # df.to_excel(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\Input\ck.pdf_WCT_Indexing_Input_File.xlsx")
 
