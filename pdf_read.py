@@ -23,7 +23,17 @@ class PdfRead:
 
         # print(page_text_list)
         return page_text_list
-            
+
+    def get_top_right_agent_code(self,file):
+        #source: file:///C://Users//kulra//OneDrive/Desktop/ilovepdf_split/12%202021%20120%20Day%20OS%20Checks%2005%2018%2021%20to%2008%2007%2021%20%20143%202%20pg-1.pdf
+        table = cam.read_pdf(file, pages = '1', flavor = 'stream')
+        top_right_agent_code = table[0].df.iat[0,1]
+        if (top_right_agent_code == "" or top_right_agent_code == None):
+            raise Exception("Agent Code Not found")
+        else:
+            print(table[0].df.iat[0,1])
+            return top_right_agent_code
+                
     def find_agent_code_line(self, page_text_list):
         for item in page_text_list:
             if item.startswith("Agent Code"):
