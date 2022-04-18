@@ -1,5 +1,5 @@
 # Useful libraries
-from typing_extensions import get_args
+# from typing_extensions import get_args
 from pdf2image import convert_from_path
 from pytesseract import image_to_string
 
