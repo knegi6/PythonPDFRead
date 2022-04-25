@@ -1,4 +1,5 @@
 # from typing_extensions import Self
+from email import policy
 import fitz
 import camelot as cam
 import re
@@ -117,5 +118,7 @@ class PdfRead:
     def get_policy_no_from_table(self, pdf_path):
         table = cam.read_pdf(pdf_path , pages = '1', flavor = 'stream')
         policy_no = table[0].df[[0,1]].iat[2,1]
+        if (policy_no=="" or policy_no== None):
+            raise Exception("Policy no. not found.")
         print(policy_no)
         return policy_no    
