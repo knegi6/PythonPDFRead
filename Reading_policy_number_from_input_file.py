@@ -8,8 +8,10 @@ import pdf_read_OCR as pocr
 # from os.path import join
 
 
+
 import pandas as pd
-master_csv= (r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_25_2022\Master_Excel_WCT_4_25_2022.csv")
+# master_csv= (r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\WCT_Master_Excel.csv")
+master_csv= (r"\\Bpspfilnor401\BluePrism\GAFG\Correspb\GAFG_Correspb_Master_Excel.csv")
 master_excel= (r"\\Bpspfilnor401\BluePrism\GAFG\GAFG_AgentB_Indexing\4_13_2022\Master_Excel_AgentB_4_13_2022.xlsx")
 
 df=pd.read_csv(master_csv)
@@ -33,7 +35,7 @@ for index, row in df.iterrows():
         try:
             # agent_code_dict[file]=pfr.get_policy_no_from_table(file)
             agent_code_dict[file]= pfr.get_data_after_colon_contract_number(pfr.get_text_from_pdf_into_list(file))
-
+           
 
             # agent_code_dict[file]= pfr.get_data_after_colon_contract_number(pocr.get_text_from_any_pdf_into_list(file))
         except Exception as e:
@@ -45,7 +47,14 @@ for index, row in df.iterrows():
             except Exception as ex:
                 print("error2")
                 print(ex)
-                agent_code_dict[file]=pfr.extract_contract_number_from_2nd_page(file)
+                try:
+
+                    agent_code_dict[file]=pfr.extract_contract_number_from_2nd_page(file)
+                except Exception as exc:
+                    print("error3")
+                    print(exc)
+                    agent_code_dict[file]= pfr.get_data_after_colon_policy_number(pfr.get_text_from_pdf_into_list(file))
+
             # agent_code_dict[file]= pfr.get_data_after_colon_contract_number(pfr.get_text_from_pdf_into_list(file))
             # agent_code_dict[file]=pfr.get_policy_no_from_table(file)
 

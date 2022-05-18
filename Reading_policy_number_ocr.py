@@ -9,7 +9,7 @@ import pdf_read_OCR as pocr
 
 
 import pandas as pd
-master_csv= (r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_21_2022\Master_Excel_WCT_4_21_2022.csv")
+master_csv= (r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_28_2022\Master_Excel_WCT_4_28_2022.csv")
 master_excel= (r"\\Bpspfilnor401\BluePrism\GAFG\GAFG_AgentB_Indexing\4_13_2022\Master_Excel_AgentB_4_13_2022.xlsx")
 
 df=pd.read_csv(master_csv)
