@@ -55,3 +55,4 @@ def get_text_from_any_pdf_into_list(pdf_file):
     page_text = get_text_from_any_pdf(pdf_file)
     page_text_list = page_text.split("\n")
     return page_text_list
+

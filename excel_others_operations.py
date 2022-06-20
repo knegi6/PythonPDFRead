@@ -16,6 +16,15 @@ class ExcelAndPandasOperation:
         excel_file.save(excel_file_path)
 
 
+    def delete_first_column_from_Sheet1(self, excel_file_path):
+        excel_file = opxl.load_workbook(excel_file_path)
+        excel_sheet = excel_file['Sheet1']
+
+        # delete column
+        excel_sheet.delete_cols(idx=1) # row 1 is deleted]
+        excel_file.save(excel_file_path)
+
+
     
     
     # files = ffo.get_files_recursively(r"\\Bpspfilnor401\BluePrism\WCT\Correspb Indexing\4_8_2022\SPLIT\ck.pdf_SPLIT_FOLDER")
